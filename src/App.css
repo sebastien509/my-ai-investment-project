@@ -21,8 +21,38 @@ background-color: rgba(173, 209, 231, 0.169);
   flex: 1;
   border: 1px solid wheat;
 }
+
+.response {
+  text-align: left;
+  font-family: 'Arial', sans-serif;   /* Set a professional, easy-to-read font */
+  font-size: 16px;                    /* Adjust the font size for readability */
+  line-height: 1.6;                   /* Space between lines for better readability */
+  letter-spacing: 0.5px;              /* Space between letters slightly for clarity */
+  padding: 1em;                       /* Padding around the text */
+  color: #333;                        /* Dark text color for contrast */
+  background-color: #f9f9f9;          /* Light background for a soft look */
+  border-left: 4px solid #0077b6;     /* Left border to create a subtle emphasis */
+  border-radius: 5px; 
+  padding-left: 20px;
+
+}
+.response p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+  padding-left: 100px;
+}
+
+.response h3{
+  text-align: center;
+  padding-left: 50px;
+}
+/* 
+.response-page {
+  
+} */
+
 /* Importing Google Font for better typography */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap'); */
 
 /* Form Container Styles */
 .form-container {
@@ -165,3 +195,26 @@ button:focus {
 .read-the-docs {
   color: #888;
 } */
+.styled-paragraph {
+  font-family: 'Arial', sans-serif;   /* Set a professional, easy-to-read font */
+  font-size: 16px;                    /* Adjust the font size for readability */
+  line-height: 1.6;                   /* Space between lines for better readability */
+  letter-spacing: 0.5px;              /* Space between letters slightly for clarity */
+  padding: 1em;                       /* Padding around the text */
+  color: #333;                        /* Dark text color for contrast */
+  background-color: #f9f9f9;          /* Light background for a soft look */
+  border-left: 4px solid #0077b6;     /* Left border to create a subtle emphasis */
+  border-radius: 5px;                 /* Rounded corners */
+}
+
+.styled-paragraph::before {
+  content: "• ";                      /* Add a bullet point symbol before the paragraph */
+  color: #0077b6;                     /* Bullet color to match the border */
+  font-weight: bold;
+}
+
+.styled-paragraph span {
+  display: inline-block;
+  margin-left: 1.2em;                 /* Indent lines slightly for clarity */
+  padding-left: 0.3em;
+}

@@ -1,0 +1,18 @@
+{
+    "Plans": [
+        {
+            "id":"",
+            "age":"",
+            "savings":"",
+            "yearlySalary":"",
+            "goal":"",
+            "plan":""
+        }
+    ],
+    "graph": [
+        {
+            "input":""
+        }
+
+    ]
+}

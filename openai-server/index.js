@@ -31,7 +31,8 @@ app.post('/api/generate', async (req, res) => {
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: prompt }
       ],
-      max_tokens: 50,
+      max_tokens: 1024,
+      
     });
 
     res.json({ completion: completion.choices[0].message.content });
@@ -41,7 +42,7 @@ app.post('/api/generate', async (req, res) => {
   }
 });
 
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
