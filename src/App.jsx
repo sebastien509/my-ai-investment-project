@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Form from './Form';
 import GraphPrompt from './GraphPrompt';
+import Response from './Response';
+
 
 function App() {
   const [formData, setFormData] = useState({
@@ -95,7 +97,7 @@ function App() {
       <h1>Plan Your Future</h1>
       <Form onSubmit={handleFormSubmit} formData={formData} setFormData={setFormData} />
       {loading && <p>Loading...</p>}
-      {planData && <div><h2>Your Financial Plan</h2><p>{planData}</p></div>}
+      {planData && <Response  planData={planData}/>}
       {graphData && <GraphPrompt res={graphData} />}
     </div>
   );
