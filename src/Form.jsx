@@ -1,75 +1,64 @@
-// Form.jsx
 import React, { useState } from 'react';
 
-function Form({ onSubmit }) {
-  const [formData, setFormData] = useState({
-    age: '',
-    savings: '',
-    goal: '',
-    salary: ''
-  });
-
+function Form({ onSubmit, formData, setFormData }) {
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);  // Pass form data to the parent component
+    onSubmit(formData); // Pass form data to App
   };
 
   return (
-    <form onSubmit={handleSubmit} className='form-container'>
-      <div className="form-group">
-        <label htmlFor="age">Age</label>
+    <form className='form-container' onSubmit={handleSubmit}>
+      <div>
+        <label>Age</label>
         <input
+          className='form-group'
           type="number"
-          id="age"
           name="age"
           value={formData.age}
           onChange={handleChange}
           required
         />
       </div>
-
-      <div className="form-group">
-        <label htmlFor="savings">Savings</label>
+      <div>
+        <label>Savings</label>
         <input
+        className='form-group'
           type="number"
-          id="savings"
           name="savings"
           value={formData.savings}
           onChange={handleChange}
           required
         />
       </div>
-
-      <div className="form-group">
-        <label htmlFor="goal">Goal</label>
+      <div>
+        <label>Goal</label>
         <input
+        className='form-group'
           type="text"
-          id="goal"
           name="goal"
           value={formData.goal}
           onChange={handleChange}
           required
         />
       </div>
-
-      <div className="form-group">
-        <label htmlFor="salary">Yearly Salary</label>
+      <div>
+        <label>Yearly Salary</label>
         <input
+        className='form-group'
           type="number"
-          id="salary"
           name="salary"
           value={formData.salary}
           onChange={handleChange}
           required
         />
       </div>
-
-      <button type="submit">Get Financial Plan</button>
+      <button type="submit">Generate Plan</button>
     </form>
   );
 }
