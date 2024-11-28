@@ -1,7 +1,8 @@
 import React from "react";
+import GraphPrompt from "./GraphPrompt";
 
 
-function response({planData}){
+function response({planData, graphData}){
     return(
         <div className="response-page">
          {planData && 
@@ -10,6 +11,8 @@ function response({planData}){
         <>{planData.split('\n').map((line, index) => (
         <p key={index}>{line}</p>
       ))}</>
+      {graphData && <GraphPrompt res={graphData} />}
+
         </div>}
        </div>
     )

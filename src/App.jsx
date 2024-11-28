@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import Form from './Form';
-import GraphPrompt from './GraphPrompt';
+import FinancialForm from './FinancialForm';
 import Response from './Response';
-
+import GraphPrompt from './GraphPrompt';
 
 function App() {
   const [formData, setFormData] = useState({
-    age: '',
-    savings: '',
-    goal: '',
-    salary: '',
+    age: "",
+    location: "",
+    maritalStatus: "",
+    dependents: "",
+    currentIncome: "",
+    expenses: "",
+    debt: "",
+    savingsRate: "",
   });
 
   const [planData, setPlanData] = useState(null);
@@ -37,7 +40,27 @@ function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          prompt: `Create a strategic and personalized financial plan for: Age: ${formData.age}, Savings: ${formData.savings}, Goal: ${formData.goal}, Salary: ${formData.salary}.`,
+          prompt: `Create a strategic and personalized financial plan for an individual looking to achieve a successful and stable economic future. Use the following information to tailor a plan for investments, house buying, and retirement:
+
+- **Personal Information**:
+  - Age: ${formData.age}
+  - Location: ${formData.location}
+  - Marital Status: ${formData.maritalStatus}
+  - Dependents: ${formData.dependents}
+
+- **Income and Financial Overview**:
+  - Current Monthly Income: $${formData.currentIncome}
+  - Total Monthly Expenses: $${formData.expenses}
+  - Debt: $${formData.debt}
+  - Savings Rate: ${formData.savingsRate}% of monthly income
+
+Consider this individual's current financial situation, priorities, and goals. Provide:
+1. **Investment Strategy**: Recommendations for diversifying and optimizing investments based on income, savings rate, and risk tolerance.
+2. **House Buying Plan**: A step-by-step guide to saving for a house, including budgeting, down payment goals, and an ideal timeline for buying based on their current financial state.
+3. **Retirement Plan**: A detailed plan for retirement savings, including target savings benchmarks, potential growth, and strategies to achieve their desired retirement lifestyle.
+
+Ensure the plan is realistic, actionable, and future-proof, taking into account potential career growth and life changes. Use practical financial principles to create a clear roadmap for financial success.`,
+
         }),
       });
   
@@ -59,19 +82,29 @@ function App() {
         body: JSON.stringify({
           prompt: `Using the response here: ${planData.completion}.create a personalized chart values - Only give the values of the keys similar to this setup "{
   "investmentGrowth": {
-    "labels": ["Year 1", "Year 2", "Year 3", "Year 4", "Year 5"],
-    "data": [1000, 1500, 2000, 3000, 5000]
+    "labels": ["y", "y ", "y ", "y ", "y "...],
+    "data": [x, x, x, x, x...]
   },
   "houseBuyingPlan": {
-    "labels": ["Salary", "Savings", "Investments"],
-    "data": [50000, 20000, 10000],
-    "timeline": ["Year 1", "Year 2", "Year 3", "Year 4"]
+    "labels": ["y", "y", "y"...],
+    "data": [x, x, x...],
+    "timeline": [" x  ", " x", " x", " x"...]
   },
   "retirementPlans": {
-    "labels": ["Age 30", "Age 40", "Age 50", "Age 60"],
-    "data": [10000, 50000, 120000, 300000]
+    "labels": ["Age x", "Age x", "Age x", "Age x"...],
+    "data": [x, x, , x...]
   }
-}"-  DO NOT REPEAT THE PROMPT.  Generate a json file enclosed in a curly bracket - 3  chart values for keys "labels" and "databases" for investment, buying a house, and retirement. Data points for a financial growth chart. Additional details: Age: ${formData.age}, Savings: ${formData.savings}, Goal: ${formData.goal}, Salary: ${formData.salary}.`,
+}"-  DO NOT REPEAT THE PROMPT.  Generate a json file enclosed in a curly bracket - 3  chart values for keys "labels" and "databases" for investment, buying a house, and retirement. Data points for a financial growth chart. Additional details:  **Personal Information**:
+  - Age: ${formData.age}
+  - Location: ${formData.location}
+  - Marital Status: ${formData.maritalStatus}
+  - Dependents: ${formData.dependents}
+
+- **Income and Financial Overview**:
+  - Current Monthly Income: $${formData.currentIncome}
+  - Total Monthly Expenses: $${formData.expenses}
+  - Debt: $${formData.debt}
+  - Savings Rate: ${formData.savingsRate}% of monthly income`,
         }),
       });
   
@@ -86,19 +119,17 @@ function App() {
         body: JSON.stringify({ graphs: graphData.completion }),
       });
     } catch (error) {
-      console.error('Error:', error.message);
+      console.error("Error during form submission:", error);
     } finally {
       setLoading(false);
     }
   };
-  
+
   return (
-    <div className="main">
-      <h1>Plan Your Future</h1>
-      <Form onSubmit={handleFormSubmit} formData={formData} setFormData={setFormData} />
+    <div>
+      <FinancialForm formData={formData} setFormData={setFormData} onSubmit={handleFormSubmit} />
       {loading && <p>Loading...</p>}
-      {planData && <Response  planData={planData}/>}
-      {graphData && <GraphPrompt res={graphData} />}
+      {planData && <Response  planData={planData}  graphData={graphData}/>}
     </div>
   );
 }
