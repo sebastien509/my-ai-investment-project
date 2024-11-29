@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import FinancialForm from './FinancialForm';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Response from './Response';
 import GraphPrompt from './GraphPrompt';
+import SideBarList from './SideBarList';
+import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -19,9 +23,14 @@ function App() {
   const [graphData, setGraphData] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate()
+
   const handleFormSubmit = async (formData) => {
     setLoading(true);
     try {
+
+      navigate('/response');
+
       // Step 1: Save Form Data
       const saveFormDataResponse = await fetch('http://localhost:3000/plans', {
         method: 'POST',
@@ -118,18 +127,40 @@ Ensure the plan is realistic, actionable, and future-proof, taking into account 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ graphs: graphData.completion }),
       });
+
+      
+
     } catch (error) {
       console.error("Error during form submission:", error);
     } finally {
       setLoading(false);
     }
+
   };
 
+  
   return (
     <div>
-      <FinancialForm formData={formData} setFormData={setFormData} onSubmit={handleFormSubmit} />
-      {loading && <p>Loading...</p>}
-      {planData && <Response  planData={planData}  graphData={graphData}/>}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div>
+              <FinancialForm formData={formData} setFormData={setFormData} onSubmit={handleFormSubmit} />
+              {/* <SideBarList /> */}
+            </div>
+          }
+        />
+        <Route
+          path="/response"
+          element={
+            <div>
+              {loading && <p>Loading...</p>}
+              {planData && <Response planData={planData} graphData={graphData} />}
+            </div>
+          }
+        />
+      </Routes>
     </div>
   );
 }

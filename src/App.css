@@ -222,16 +222,22 @@ button:focus {
 
 
 .financial-form {
+  background-color: #79bd7c62;
+  background-image: url('https://thefintechtimes.com/wp-content/uploads/2020/11/iStock-1157946054.jpg');
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
   margin-top: 50px;
   padding-top: 30px;
-  background-color: #79bd7c62;
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns of equal width */
   gap: 20px; /* Spacing between rows and columns */
   width: 800px; /* Set a max-width for the form */
-  margin-left: -100px ; /* Center the form horizontally */
+  margin-left: -100px; /* Center the form horizontally */
   font-family: Arial, sans-serif; /* Set a clean font */
+  position: absolute;
 }
+
 
 .financial-form label {
   display: flex;
@@ -267,13 +273,15 @@ button:focus {
   background-color: #0056b3;
 }
 .bg-image {
-  background-image: url('https://i.imgur.com/R8lq1DT.jpeg'); /* Replace with your image URL */
-  background-size: cover; /* Ensures the image covers the entire element */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  height: 100vh; /* Full viewport height, adjust as needed */
-  width: 100%; /* Full width */
-  position: relative; /* Allows for overlay content */
-}
+  background-image: src=('https://i.imgur.com/R8lq1DT.jpeg');
+  background-size: cover; /* Make the image cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image tiling */
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width of the page */
+  display: flex; /* Enables centering child content */
+  align-items: center; /* Centers content vertically */
+  justify-content: center; /* Centers content horizontally */
+  position: relative;
 
-/* Optional: Add a dark overlay */
+}

@@ -1,4 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router";
+import { Navigate } from "react-router";
+
 
 const FinancialForm = ({ formData, setFormData, onSubmit }) => {
   const handleChange = (e) => {
@@ -13,12 +16,13 @@ const FinancialForm = ({ formData, setFormData, onSubmit }) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     onSubmit(formData);  // Use the passed onSubmit function to handle submission
+
   };
 
   return (
     <div style={{ maxWidth: "500px", margin: "0 auto", fontFamily: "Arial" }}>
-      <h2>Personalized Financial Plan Form</h2>
-      <form className="financial-form" onSubmit={handleSubmit}>
+      <h1> Plan your Future </h1>
+      <form className='financial-form' onSubmit={handleSubmit}>
         {/* Personal Information */}
         <label>
           Age:
