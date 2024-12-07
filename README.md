@@ -112,6 +112,7 @@ Endpoints
 
 POST: http://localhost:3000/plans
 Body:
+
       ```json
       {
         "age": 30,
@@ -122,10 +123,11 @@ Body:
       ```
 
 2. AI Financial Plan:
+   
 POST: http://localhost:3001/api/generate
 
 Body:
-       ```json
+      ```json
        {
          "prompt": "As a financial expert, create a plan..."
        }
@@ -134,14 +136,17 @@ Body:
 
 POST: http://localhost:3000/graph
 Body:
-       ```json
-       {
+
+   ```json
+ {
          "input": [
            { "label": "Year 1", "value": 5000 },
            { "label": "Year 2", "value": 10000 }
          ]
        }
    ```
+
+
 ---
 ## Future Enhancements
 -User Authentication: Secure user accounts for personalized data storage.
@@ -156,20 +161,24 @@ We welcome contributions! Please follow these steps:
 1. Fork the repository.
    
 2. Create a new branch:
+
     ```bash
     git checkout -b feature-branch-name
     ```
     
-3. Commit your changes:
-    ```bash
+4. Commit your changes:
+
+     ```bash
     git commit -m "Add your message here"
     ```
     
-4. Push to your branch:
+6. Push to your branch:
+
     ```bash
     git push origin feature-branch-name
     ```
-5. Open a pull request.
+    
+7. Open a pull request.
 
 ---
 ## License
