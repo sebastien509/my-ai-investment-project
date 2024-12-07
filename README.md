@@ -1,6 +1,6 @@
 # AI Investing Future Financial Plan
 
-An intelligent application designed to help individuals plan their financial future by leveraging AI to generate tailored investment strategies and visual growth charts. This project combines advanced financial modeling with user-friendly interfaces to provide actionable insights.
+I built this intelligent application designed to help individuals plan their financial future by leveraging AI to generate tailored investment strategies and visual growth charts. This project combines advanced financial modeling with user-friendly interfaces to provide actionable insights.
 
 ---
 
@@ -112,35 +112,36 @@ Endpoints
 
 POST: http://localhost:3000/plans
 Body:
-```json
-{
-  "age": 30,
-  "savings": 10000,
-  "goal": "Buy a house",
-  "salary": 50000
-}
+      ```json
+      {
+        "age": 30,
+        "savings": 10000,
+        "goal": "Buy a house",
+        "salary": 50000
+      }
+      ```
 
 2. AI Financial Plan:
 POST: http://localhost:3001/api/generate
 
 Body:
-    ```json
-    {
-      "prompt": "As a financial expert, create a plan..."
-    }
-
+       ```json
+       {
+         "prompt": "As a financial expert, create a plan..."
+       }
+      ```
 3. Save Graph Data:
 
 POST: http://localhost:3000/graph
 Body:
-    ```json
-    {
-      "input": [
-        { "label": "Year 1", "value": 5000 },
-        { "label": "Year 2", "value": 10000 }
-      ]
-    }
-```
+       ```json
+       {
+         "input": [
+           { "label": "Year 1", "value": 5000 },
+           { "label": "Year 2", "value": 10000 }
+         ]
+       }
+   ```
 ---
 ## Future Enhancements
 -User Authentication: Secure user accounts for personalized data storage.
